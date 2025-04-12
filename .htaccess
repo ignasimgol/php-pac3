@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /php-pec3/
+
+# Rewrite API endpoints
+RewriteRule ^api/videogames/?$ api.php [L,QSA]
+RewriteRule ^api/videogames/([0-9]+)/?$ api.php [L,QSA]
+RewriteRule ^api/videogame/([0-9]+)/?$ api.php [L,QSA]
