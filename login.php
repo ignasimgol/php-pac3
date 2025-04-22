@@ -53,6 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <title>Login</title>
     <style>
+        * {
+            font-family: sans-serif;
+        }
         .login-container {
             max-width: 400px;
             margin: 50px auto;

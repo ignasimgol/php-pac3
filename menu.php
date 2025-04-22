@@ -4,10 +4,19 @@ $is_logged_in = isset($_SESSION['user_id']);
 ?>
 
 <style>
+    * {
+        font-family: sans-serif;
+    }
     .main-nav {
         background-color: #333;
         padding: 1rem;
         margin-bottom: 2rem;
+        border-radius: 34px;
+        text-align: center;
+        justify-content: center;    
+        justify-items: center;
+        max-width: 50%;
+        margin: 0 auto;
     }
     .nav-list {
         list-style: none;

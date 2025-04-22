@@ -67,6 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <title>Sign Up</title>
     <style>
+        * {
+            font-family: sans-serif;
+        }
         .signup-container {
             max-width: 400px;
             margin: 50px auto;

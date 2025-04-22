@@ -68,16 +68,59 @@ $genres_result = mysqli_query($conn, $genres_query);
 <head>
     <title>Videojocs</title>
     <style>
+        * {
+            font-family: sans-serif;
+        }
         .game-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
             padding: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         .game-card {
             border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
+            padding: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            background: white;
+        }
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .game-card-image {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        .game-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .game-card-content {
+            padding: 20px;
+        }
+        .game-card h2 {
+            margin: 0 0 15px 0;
+            font-size: 1.4em;
+        }
+        .game-card h2 a {
+            color: #333;
+            text-decoration: none;
+        }
+        .game-card h2 a:hover {
+            color: #666;
+        }
+        .game-card p {
+            margin: 8px 0;
+            color: #666;
         }
         .game-card img {
             max-width: 100%;
@@ -111,7 +154,7 @@ $genres_result = mysqli_query($conn, $genres_query);
 <body>
     <?php include 'menu.php'; ?>
     <?php if (isset($_SESSION['username'])): ?>
-    <div style="text-align: center; margin: 10px 0;">
+    <div style="margin: 10px 20px;">
         Benvingut, <?php echo htmlspecialchars($_SESSION['username']); ?>!
     </div>
     <?php endif; ?>
@@ -157,15 +200,19 @@ $genres_result = mysqli_query($conn, $genres_query);
     <div class="game-list">
         <?php while ($game = mysqli_fetch_assoc($result)): ?>
             <div class='game-card'>
-                <img src='<?php echo htmlspecialchars($game['imatge']); ?>' 
-                     alt='<?php echo htmlspecialchars($game['titol']); ?>'>
-                <h2><a href='post.php?id=<?php echo $game['id']; ?>'>
-                    <?php echo htmlspecialchars($game['titol']); ?>
-                </a></h2>
-                <p>Desenvolupador: <?php echo htmlspecialchars($game['desenvolupador']); ?></p>
-                <p>Plataforma: <?php echo htmlspecialchars($game['platforma']); ?></p>
-                <p>Any: <?php echo htmlspecialchars($game['any_llancament']); ?></p>
-                <p>Gènere: <?php echo htmlspecialchars($game['genere']); ?></p>
+                <div class='game-card-image'>
+                    <img src='<?php echo htmlspecialchars($game['imatge']); ?>' 
+                         alt='<?php echo htmlspecialchars($game['titol']); ?>'>
+                </div>
+                <div class='game-card-content'>
+                    <h2><a href='post.php?id=<?php echo $game['id']; ?>'>
+                        <?php echo htmlspecialchars($game['titol']); ?>
+                    </a></h2>
+                    <p><strong>Desenvolupador:</strong> <?php echo htmlspecialchars($game['desenvolupador']); ?></p>
+                    <p><strong>Plataforma:</strong> <?php echo htmlspecialchars($game['platforma']); ?></p>
+                    <p><strong>Any:</strong> <?php echo htmlspecialchars($game['any_llancament']); ?></p>
+                    <p><strong>Gènere:</strong> <?php echo htmlspecialchars($game['genere']); ?></p>
+                </div>
             </div>
         <?php endwhile; ?>
     </div>

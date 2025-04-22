@@ -28,6 +28,9 @@ if (!$game) {
 <head>
     <title><?php echo htmlspecialchars($game['titol']); ?></title>
     <style>
+        * {
+            font-family: sans-serif;
+        }
         .game-details {
             max-width: 800px;
             margin: 20px auto;
@@ -47,7 +50,7 @@ if (!$game) {
 <body>
     <?php include 'menu.php'; ?>
     <?php if (isset($_SESSION['username'])): ?>
-    <div style="text-align: center; margin: 10px 0;">
+    <div style="margin: 10px 20px;">
         Benvingut, <?php echo htmlspecialchars($_SESSION['username']); ?>!
     </div>
     <?php endif; ?>

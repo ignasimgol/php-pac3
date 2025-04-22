@@ -13,6 +13,9 @@ if (!$conn) {
 <head>
     <title>Random Video Game</title>
     <style>
+        * {
+            font-family: sans-serif;
+        }
         .game-container {
             max-width: 800px;
             margin: 50px auto;
@@ -39,7 +42,11 @@ if (!$conn) {
 </head>
 <body>
     <?php include 'menu.php'; ?>
-    
+    <?php if (isset($_SESSION['username'])): ?>
+    <div style="margin: 10px 20px;">
+        Benvingut, <?php echo htmlspecialchars($_SESSION['username']); ?>!
+    </div>
+    <?php endif; ?>
     <div class="game-container">
         <?php
         $query = "SELECT * FROM videogames_jocs ORDER BY RAND() LIMIT 1";
