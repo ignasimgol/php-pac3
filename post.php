@@ -45,6 +45,12 @@ if (!$game) {
     </style>
 </head>
 <body>
+    <?php include 'menu.php'; ?>
+    <?php if (isset($_SESSION['username'])): ?>
+    <div style="text-align: center; margin: 10px 0;">
+        Benvingut, <?php echo htmlspecialchars($_SESSION['username']); ?>!
+    </div>
+    <?php endif; ?>
     <div class="game-details">
         <h1><?php echo htmlspecialchars($game['titol']); ?></h1>
         <img src="<?php echo htmlspecialchars($game['imatge']); ?>" 

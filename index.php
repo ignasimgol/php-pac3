@@ -38,6 +38,12 @@ $random_result = mysqli_query($conn, $random_query);
     </style>
 </head>
 <body>
+    <?php include 'menu.php'; ?>
+    <?php if (isset($_SESSION['username'])): ?>
+    <div style="text-align: center; margin: 10px 0;">
+        Benvingut, <?php echo htmlspecialchars($_SESSION['username']); ?>!
+    </div>
+    <?php endif; ?>
     <h1>Videojocs</h1>
     <div class="game-list">
         <?php
